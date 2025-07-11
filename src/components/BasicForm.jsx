@@ -21,8 +21,10 @@ export const BasicForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid }
-  } = useForm({})
+    formState: { errors }
+  } = useForm({
+    resolver: yupResolver(schema)
+  })
 
   const onSubmit = (data) => {
     console.log(data)
@@ -31,8 +33,11 @@ export const BasicForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <input type='text' {...register('username')} placeholder='Usuario' />
+      {errors.username && <p>{errors.username.message}</p>}
       <input type='password' {...register('password')} placeholder='Contraseña' />
+      {errors.password && <p>{errors.password.message}</p>}
       <input type='password' {...register('confirmPassword')} placeholder='Confirma contraseña' />
+      {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
       <button type='submit'>Enviar</button>
     </form>
   )
