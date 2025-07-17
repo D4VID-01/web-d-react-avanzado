@@ -11,23 +11,6 @@ const schema = yup.object({
     .required('El mensaje es obligatorio')
 })
 
-// Paso 1 (parte-3): Crear el estado inicial
-const initialState = {
-  messages: []
-}
-
-// Paso 2 (parte-3): Crear la función reductora
-const chatReducer = (state, action) => {
-  switch (action.type) {
-    case 'ADD_MESSAGE':
-      console.log('agregando mensaje...')
-      console.log(state)
-      return { ...state, messages: [...state.messages, action.payload] }
-    default:
-      return state
-  }
-}
-
 export const App = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
@@ -36,30 +19,10 @@ export const App = () => {
   // Guarda la respuesta  de llama2
   const [response, setResponse] = useState('')
   const [loading, setLoading] = useState(false)
-  // Paso 3 (parte-3): uso de hook useReducer
-  const [state, dispatch] = useReducer(chatReducer, initialState)
 
   const handlePregunta = async data => {
     console.log(data)
     setLoading(true)
-
-    try {
-      const res = await axios.post('http://localhost:11434/api/generate', {
-        model: 'llama2',
-        prompt: data.userInput,
-        stream: false
-      })
-      setResponse(res.data.response)
-      // Paso 4 (parte-3): Generar los dispatch
-      // Dispatch para guardar el mensaje del usuario
-      dispatch({ type: 'ADD_MESSAGE', payload: { form: 'user', text: data.userInput } })
-      // Dispatch para guardar el mensaje del bot
-      dispatch({ type: 'ADD_MESSAGE', payload: { form: 'bot', text: res.data.response } })
-    } catch (error) {
-      console.error('error: ', error)
-    } finally {
-      setLoading(false)
-    }
   }
 
   return (
