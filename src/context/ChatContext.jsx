@@ -22,12 +22,6 @@ const chatReducer = (state, action) => {
   }
 }
 
-/* // Paso 4 (parte-3): Generar los dispatch
-// Dispatch para guardar el mensaje del usuario
-dispatch({ type: 'ADD_MESSAGE', payload: { form: 'user', text: userPrompt } })
-// Dispatch para guardar el mensaje del bot
-dispatch({ type: 'ADD_MESSAGE', payload: { form: 'bot', text: res.data.response } }) */
-
 // 2. Provider
 export const ChatProvider = ({ children }) => {
 // Paso 3 (parte-3): uso de hook useReducer
