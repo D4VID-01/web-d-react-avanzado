@@ -1,0 +1,10 @@
+GET http://localhost:3000/peliculas HTTP/1.1
+
+###
+GET http://localhost:3000/peliculas/2 HTTP/1.1
+
+###
+POST http://localhost:3000/peliculas HTTP/1.1
+header name: header value
+
+content
