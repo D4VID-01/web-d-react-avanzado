@@ -5,6 +5,18 @@
       "text": "Hola mundo",
       "sender": "user",
       "timestamp": "2025-07-30T02:26:19.420Z"
+    },
+    {
+      "id": 1754011997940,
+      "text": "hola",
+      "sender": "user",
+      "timestamp": "2025-08-01T01:33:17.940Z"
+    },
+    {
+      "id": 1754011999424,
+      "text": "Hola! (Hello in Spanish)",
+      "sender": "bot",
+      "timestamp": "2025-08-01T01:33:19.424Z"
     }
   ]
 }
